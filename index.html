@@ -158,18 +158,23 @@
 <h1 id="React_Native">React Native</h1><p>If you are not familiar with React Native, it is a cross platform tool from Facebook to build <em>native</em> apps.  Not hybrid apps, not web apps, but native apps for iOS and Android.  Your UI are native components for the OS with your business logic code running in JavaScript Core.  The main difference between a React.js app and a React Native app is your render function.  You can reuse most of your code between the two platforms.  Visit the <a href="https://facebook.github.io/react-native/" target="_blank">official site</a> to learn more about React Native.</p>
 <h2 id="React_Native_gotchas">React Native gotchas</h2><p>You do need a Mac to build iOS apps, along with XCode.  Android support is available on Windows.</p>
 <h1 id="Exponent_XDE">Exponent XDE</h1><p>The XDE is a tool from Exponent JS to help you develop React Native applications.  iOS development is supported with plans for adding Android support in the future.  Head on over to <a href="http://exponentjs.com/" target="_blank">exponentjs.com</a> to learn more and download the XDE.  The XDE only supports Mac  with plans to extend support to Windows and Linux.  The XDE has a companion app to run on your iPhone.  This app allows you to develop your React Native app without ever building it.  If your app uses custom modules or extensions, you cannot use the XDE companion app to test your application.</p>
+<p><img src="/images/xde/xde1.png"></p>
 <h2 id="The_tool">The tool</h2><p>The XDE provides a wide array of features to help with your development.  When you create a new project a simple template that showcases some of the features of React Native.  It provides the bare bones files your project needs; it does not include the whole project that React Native gives you when you use the CLI tool.  This allows you to develop your project only editing the JS code.  The XDE is not an “IDE”, but a helper tool for developing your React Native app.  It lets you use any editor you want and piggy backs on the React Native debugging already provided.  The power is the companion app and extra magic the XDE provides.</p>
 <h2 id="The_basics">The basics</h2><p>At a low level (not really), the XDE handles most of the overhead for React Native development.  When you open a project it starts the React Packager for your application.  This will serve up the webpack JS code for the Expononet companion application.  You can serve your code via LAN, localhost, or using ngrok which is provided for you.  Ngrok handles any proxy and firewall issues for you.  You use the URL provided in the companion app and it will let you test outside your LAN, regardless of any settings you have.</p>
 <p>The project management is extremely lightweight.  They store global settings inside a $HOME/.exponent directory and do not clutter your project with additional files.  Additionally, they will launch the terminal or a code editor of your choice.  If you have Atom installed, it kicks out to that first (or it did for me) regardless of your default.</p>
 <h2 id="The_Cloud">The Cloud</h2><p>Exponent also provides a service called exp.host.  This allows you to push your project assets up for anyone to test anywhere.  Each project is stored under your account and accessible with a known URL. Projects pushed up are available in the companion app for testing.  You can also send a link to email or your phone for testing on device.  It will launch the companion app via the exp:// protocol handler.</p>
+<p><img src="/images/xde/xde2.png"></p>
 <h2 id="The_Companion_app">The Companion app</h2><p>This is a key tool to help with development.  You can install it on the iOS simulator or get it from the store for your iPhone.  You can pick a URL to launch inside the app which points to your JavaScript bundle from webpack.  This can be your local machine from the XDE or a hosted document in the exp cloud.  Anyone can install the companion app from the store, which is great when working with remote parties.  You can send them a link to launch and they can run your code without having to build an IPA.</p>
+<p><img src="/images/xde/xde3.png" style="height:400px"></p>
 <h3 id="Debugging">Debugging</h3><p>The companion app has debugging enabled by default.  Simply shake your device to bring up the React Native developer menu.  This is an amazing tool for working with React Native.  This feature is available in the companion app from the store; no need to build your own custom version with certificates.  The React Native site goes into great detail about debugging, so head on over to <a href="https://facebook.github.io/react-native/docs/debugging.html" target="_blank">the docs</a> to learn more.</p>
+<p><img src="/images/xde/xde4.png" style="height:400px"></p>
+<p><img src="/images/xde/xde5.png" style="height:400px"></p>
 <h2 id="The_Future">The Future</h2><p>The future for the XDE and React Native look great.  The team has a slack channel to interact with users and are looking for feedback.  I’m anticipating their Android release to help speed up development of cross platform applications.  They’ve also stated they may look into cloud build solutions, which puts the XDE and React Native against some other great tools (Phonegap Build/Intel XDK).</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://imaffett.github.io/2015/09/30/xde-react-native/" data-id="cif7hxhr700010yh1sjs54qft" class="article-share-link">Share</a>
+      <a data-url="http://imaffett.github.io/2015/09/30/xde-react-native/" data-id="cif8532uc0001wjh1j9bdf0mr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://imaffett.github.io/2015/09/28/Welcome/" data-id="cif7hxhqb00000yh1ovdzconp" class="article-share-link">Share</a>
+      <a data-url="http://imaffett.github.io/2015/09/28/Welcome/" data-id="cif8532sk0000wjh1y242h06o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +252,8 @@
             <div class="item-thumbnail">
               <a href="/2015/09/30/xde-react-native/" class="thumbnail">
   
-    <span class="thumbnail-image thumbnail-none"></span>
+    <span style="background-image:url(/images/xde/xde1.png
+)" alt="XDE and React Native" class="thumbnail-image"></span>
   
 </a>
             </div>
