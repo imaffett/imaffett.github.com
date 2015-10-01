@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>JavaScript and HTML5</title>
+  <title>XDE and React Native | JavaScript and HTML5</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JavaScript and HTML5">
-<meta property="og:url" content="http://imaffett.github.io/index.html">
+  <meta name="description" content="OverviewToday I’ll do a quick highlight of an impressive tool to help with React Native development.  Created by the group at Exponent.js, this tool helps you kick the wheels with React Native.  While">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XDE and React Native">
+<meta property="og:url" content="http://imaffett.github.io/2015/09/30/xde-react-native/index.html">
 <meta property="og:site_name" content="JavaScript and HTML5">
-<meta property="og:description">
+<meta property="og:description" content="OverviewToday I’ll do a quick highlight of an impressive tool to help with React Native development.  Created by the group at Exponent.js, this tool helps you kick the wheels with React Native.  While">
+<meta property="og:updated_time" content="2015-10-01T00:30:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript and HTML5">
-<meta name="twitter:description">
+<meta name="twitter:title" content="XDE and React Native">
+<meta name="twitter:description" content="OverviewToday I’ll do a quick highlight of an impressive tool to help with React Native development.  Created by the group at Exponent.js, this tool helps you kick the wheels with React Native.  While">
   
   
     <link rel="icon" href="favicon.png">
@@ -123,8 +124,7 @@
 </aside>
 
       
-      <section id="main">
-      <article id="post-xde-react-native" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-xde-react-native" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -132,8 +132,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/30/xde-react-native/">XDE and React Native</a>
+    <h1 class="article-title" itemprop="name">
+      XDE and React Native
     </h1>
   
 
@@ -175,64 +175,23 @@
     </footer>
   </div>
   
-</article>
-
-
-
     
-      <article id="post-Welcome" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/28/Welcome/">Welcome</a>
-    </h1>
   
-
-        <div class="article-meta">
-          
-  <div class="article-date">
-    <i class="fa fa-calendar"></i>
-    <a href="/2015/09/28/Welcome/">
-      <time datetime="2015-09-28T21:06:50.000Z" itemprop="datePublished">2015-09-28</time>
+    <a href="/2015/09/28/Welcome/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Welcome</div>
     </a>
-  </div>
+  
+</nav>
 
 
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-                
-        <h1 id="Another_way_to_test_Node-js_CLI_tools">Another way to test Node.js CLI tools</h1><p>I’ve been writing a few CLI tools using Node.js lately.  All of them require asynchronous code at some point in their calls; but some have multiple.  Ideally, I’d expose each function in a module properly and test them, but I wanted to be able to test the end users experience also, where they call the CLI tool and get different results back.  I could mock the HTTP requests, but I need the actual calls to execute.</p>
-<h2 id="Let’s_test_this">Let’s test this</h2><p>While chatting to a few friends, I thought why not just spawn off the call and evaluate the response.  The particular tool that I was writing had multiple functions you could execute and calling each one allowed me to test the majority of my code.  I chose to use Chai/Assert for my tests.  Chai allows you to run asynchronous tests by passing in a “done” object into your test.  When you execute that object, it will complete the test for you.  Synchronous calls are tested normally as shown below.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cli = <span class="built_in">require</span>(<span class="string">'../src/index'</span>)</span><br><span class="line"></span><br><span class="line">describe(<span class="string">"Object functions"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    it(<span class="string">"should have a run function"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      cli.should.have.property(<span class="string">"run"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    it(<span class="string">"should have a help function"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      cli.should.have.property(<span class="string">"help"</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="Spawn_to_the_rescue">Spawn to the rescue</h2><p>Spawn allows us to execute the CLI code, with parameters, and capture the output to evaluate.  This allowed me to closely replicate an end users experience using the CLI tool.  I decided to create a known passing and failing test for each asynchronous operation.  spawn allows us to capture the standard output and standard error from the CLI call.  If there are any errors, we can check to see if the test should pass or fail.</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">it<span class="list">(<span class="string">"Should return the banner and commands"</span>,function<span class="list">(<span class="keyword">done</span>)</span>&#123;</span><br><span class="line">      var banner=spawn<span class="list">(<span class="string">"../bin/tool"</span>,[<span class="string">""</span>],&#123;&#125;)</span><span class="comment">;</span></span><br><span class="line">      var buffer=null<span class="comment">;</span></span><br><span class="line">      banner.stdout.on<span class="list">(<span class="string">"data"</span>,function<span class="list">(<span class="keyword">data</span>)</span>&#123;</span><br><span class="line">        buffer+=data<span class="comment">;</span></span><br><span class="line">      &#125;)</span><span class="comment">;</span></span><br><span class="line">      banner.stderr.on<span class="list">(<span class="string">"data"</span>,function<span class="list">(<span class="keyword">err</span>)</span>&#123;</span><br><span class="line">        assert.ok<span class="list">(<span class="keyword">false</span>,<span class="string">"Error "</span>+err)</span><span class="comment">;</span></span><br><span class="line">        done<span class="list">()</span><span class="comment">;</span></span><br><span class="line">      &#125;)</span><span class="comment">;</span></span><br><span class="line">      banner.on<span class="list">(<span class="string">"close"</span>,function<span class="list">()</span>&#123;</span><br><span class="line">        buffer.indexOf<span class="list">(<span class="string">"Tool Title"</span>)</span>.should.not.equal<span class="list">(<span class="keyword">-1</span>)</span><span class="comment">;</span></span><br><span class="line">        done<span class="list">()</span><span class="comment">;</span></span><br><span class="line">      &#125;)</span><span class="comment">;</span></span><br><span class="line">&#125;)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
-<p>The second parameter of spawn is an array of arguments to pass, allowing me to test each of the calls available.  We buffer the standard output to compare against in the close event.  In our case below, we are only looking for the string “Project Created” to let us know a new project was created.</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">"Should return the banner and commands with invalid arguments"</span>,<span class="function"><span class="keyword">function</span><span class="params">(done)</span></span>&#123;</span><br><span class="line">      <span class="keyword">var</span> banner=spawn(<span class="string">"../bin/tool"</span>,[<span class="string">"create"</span>,<span class="string">"foobar"</span>],&#123;&#125;);</span><br><span class="line">      <span class="keyword">var</span> buffer=<span class="literal">null</span>;</span><br><span class="line">      banner.stdout.on(<span class="string">"data"</span>,<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>&#123;</span><br><span class="line">        buffer+=data;</span><br><span class="line">      &#125;);</span><br><span class="line">      banner.stderr.on(<span class="string">"data"</span>,<span class="function"><span class="keyword">function</span><span class="params">(err)</span></span>&#123;</span><br><span class="line">        assert.ok(<span class="literal">false</span>,<span class="string">"Error "</span>+err);</span><br><span class="line">        done();</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="comment">//On the close event, we look at the buffer</span></span><br><span class="line">      banner.on(<span class="string">"close"</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        buffer.indexOf(<span class="string">"Project Created"</span>).should.not.equal(-<span class="number">1</span>);</span><br><span class="line">        done();</span><br><span class="line">      &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="Not_the_end_all">Not the end all</h2><p>This is not an end all solution for testing your Node.js code.  This can just be in addition to however your current testing environment is.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://imaffett.github.io/2015/09/28/Welcome/" data-id="cif7hfamp0000zdh1n8yuvhrn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
 
 
-
-    </section>
+</section>
       
         <aside id="sidebar">
   
